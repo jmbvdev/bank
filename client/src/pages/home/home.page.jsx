@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector} from 'react-redux'
+import { useNavigate} from 'react-router-dom'
 
 // Components
 import TransferForm from '../../components/transfers/transfer-form/transfer-form.component';
@@ -8,6 +10,8 @@ import Button from '../../components/ui/button/button.component';
 import classes from './home.module.css';
 
 const Home = () => {
+	const user = useSelector(state => state.users.user)
+	const navigate = useNavigate()
 	const [showModal, setShowModal] = useState(false);
 
 	const hideModalHandler = () => {
@@ -17,6 +21,10 @@ const Home = () => {
 	const showModalHandler = () => {
 		setShowModal(true);
 	};
+
+	useEffect(() => {
+		if (!user) navigate('/login')
+	}, [user])
 
 	return (
 		<div className={classes.container}>

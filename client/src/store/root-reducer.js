@@ -4,7 +4,7 @@ import transfersReducer from './slices/transfers.slice';
 
 const rootReducer = {
 	users: userReducer,
-	trasnfers: transfersReducer,
+	transfers: transfersReducer,
 };
 
 export default rootReducer;

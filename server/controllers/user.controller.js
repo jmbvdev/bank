@@ -22,7 +22,13 @@ const login = async (req, res) => {
     const newUserAccount = await User.findOne({
       where: { accountNumber, password },
     });
-    res.status(200).json({ newUserAccount });
+    if (newUserAccount) {
+      res.status(200).json({ newUserAccount });
+    } else {
+      res
+        .status(401)
+        .json({ message: 'Numero de cuenta o contraseña incorrectos' });
+    }
   } catch (error) {
     console.log(error);
   }

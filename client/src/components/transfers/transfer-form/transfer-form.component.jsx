@@ -13,23 +13,27 @@ import classes from './transfer-form.module.css';
 
 const TransferForm = ({ onHideModal }) => {
 	const dispatch = useDispatch();
-	const user = useSelector(state => state.users.user);
+	const user = useSelector(state => 
+		{ return state.users.user });
 
 	// Refs
 	const accountInputRef = useRef();
 	const amountInputRef = useRef();
+	const dateInputRef= useRef()
 
 	const submitHandler = e => {
 		e.preventDefault();
 
 		const accountNumber = +accountInputRef.current.value;
 		const amount = +amountInputRef.current.value;
+		const date= dateInputRef.current.value
 
 		if (!accountNumber || !amount) {
 			return;
 		}
 
-		dispatch(newTransfer(user.accountNumber, accountNumber, amount));
+
+		dispatch(newTransfer(user.accountNumber, accountNumber, amount,date));
 
 		onHideModal();
 	};
@@ -56,6 +60,15 @@ const TransferForm = ({ onHideModal }) => {
 						type: 'number',
 						min: '1',
 						step: '1',
+					}}
+				/>
+				<Input
+					label='Date'
+					ref={dateInputRef}
+					input={{
+						id: `date`,
+						type: 'date',
+						
 					}}
 				/>
 

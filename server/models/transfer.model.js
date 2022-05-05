@@ -12,6 +12,10 @@ const Transfer = db.define('transfer', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
   senderUserId: {
     type: DataTypes.INTEGER,
     allowNull: false,
