@@ -3,16 +3,15 @@ const { User } = require('../models/user.model');
 
 const insertAmount = async (req, res) => {
   try {
-    const { date,amount, senderUserId, receiverUserId } = req.body;
+    const { date, amount, senderUserId, receiverUserId } = req.body;
     id = req.params;
-    // primero revisar el usuario senderUserId tengo el monto suficiente
 
     const sender = await User.findOne({
       where: { accountNumber: senderUserId },
     });
 
     const receiver = await User.findOne({
-      where: { accountNumber:receiverUserId },
+      where: { accountNumber: receiverUserId },
     });
     if (!receiver) {
       res.status(404).json({

@@ -25,9 +25,7 @@ const login = async (req, res) => {
     if (newUserAccount) {
       res.status(200).json({ newUserAccount });
     } else {
-      res
-        .status(401)
-        .json({ message: 'Numero de cuenta o contraseña incorrectos' });
+      res.status(401).json({ message: 'Invalid Password or Email' });
     }
   } catch (error) {
     console.log(error);

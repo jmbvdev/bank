@@ -10,7 +10,7 @@ export const getUsersTransfers = (userId) => {
       const res = await axios.get(
         `http://localhost:4000/api/v1/users/${userId}/history`
       );
-  
+
       dispatch(transfersActions.getTransfers({ transfers: res.data.user }));
     } catch (error) {
       console.log(error);
@@ -18,7 +18,7 @@ export const getUsersTransfers = (userId) => {
   };
 };
 
-export const newTransfer = (senderUserId, receiverUserId, amount,date) => {
+export const newTransfer = (senderUserId, receiverUserId, amount, date) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(API_URL, {
@@ -27,7 +27,7 @@ export const newTransfer = (senderUserId, receiverUserId, amount,date) => {
         receiverUserId,
         amount,
       });
-   
+
       dispatch(
         transfersActions.newTransfer({ newTransfer: res.data.newTransfer })
       );

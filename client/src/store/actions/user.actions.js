@@ -11,8 +11,8 @@ export const login = (accountNumber, password) => {
         accountNumber,
         password,
       });
-  
-      dispatch(usersActions.login({ user: res.data.newUserAccount}));
+
+      dispatch(usersActions.login({ user: res.data.newUserAccount }));
     } catch (error) {
       console.log(error);
     }
